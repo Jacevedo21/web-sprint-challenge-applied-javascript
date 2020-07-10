@@ -39,6 +39,7 @@ const mainHead = document.querySelector('.cards-container')
 //Step: 1 retrieve the articles from the API using axios
     axios.get(link)
     .then(function (response){
+
         //Step: 1.5 Loop through the array of articles received from the API
         // console.log(response.data.articles)
         // Object.values is grabbing the values from the key:value pairs from response.data.articles
@@ -47,8 +48,10 @@ const mainHead = document.querySelector('.cards-container')
             //what is element???? -> array of objects
             //How do we get the objects from the array??? --> using the forEach method, we 
             // mainHead.append(work(element.forEach())
+            //Step: 2 Inside the loop, call the work function and pass the article(One article)
             element.forEach( article =>{
                 // console.log(article)
+                //Step: 3 Append the loop output into the main container to display on web
                 mainHead.append(work(article))
             })
         });
@@ -57,9 +60,7 @@ const mainHead = document.querySelector('.cards-container')
         console.log(error)
     })
     
-//Step: 2 Inside the loop, call the work function and pass the article(One article)
 
-//Step: 3 Append the loop output into the main container to display on web
 
 
 
@@ -86,10 +87,17 @@ function work(article) {
     card.append(headline, author)
     author.append(container, authorName)
     container.append(img)
-
+    
+    card.addEventListener('click', (e) => {
+        console.log(e.target.textContent)
+    })
 
     return card
 }
+
+
+
+
 
 //Step: 1 Loop through the array of articles received from the API
 
